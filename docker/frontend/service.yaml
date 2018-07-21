@@ -1,0 +1,13 @@
+# EXAπMPLE POD
+kind: Service
+apiVersion: v1
+metadata:
+  name:  Service Name
+spec:
+  selector:
+    app:  Selector Label
+  type:  LoadBalancer | ClusterIP | NodePort
+  ports:
+  - name:  name-of-the-port
+    port:  8080
+    targetPort:  8080
