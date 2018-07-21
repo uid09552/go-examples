@@ -1,13 +1,13 @@
 kind: Pod
 apiVersion: v1
 metadata:
-  name: goexample
+  name: goexamplefrontend
   labels:
-    name: goexample
+    name: goexamplefrontend
 spec:
   containers:
-  - name: goexample
-    image: uid09552/goexample:latest
+  - name: goexamplefrontend
+    image: uid09552/goexamplefrontend:latest
     ports:
       - containerPort: 8080
     livenessProbe:
@@ -16,3 +16,7 @@ spec:
         port: 8080
       initialDelaySeconds: 3
       periodSeconds: 3 
+  - name: goexamplebackend
+    image: uid09552/goexamplebackend:latest
+    ports:
+      - containerPort: 8081
