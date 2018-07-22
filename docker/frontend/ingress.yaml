@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: host-based-ingress
+  annotations:
+    scale: "2"
+    http.port: "81"
+spec:
+  rules:
+  - host: goexample.apps.max-hoch.de
+    http:
+      paths:
+      - backend:
+          serviceName: goexample
+          servicePort: 8080

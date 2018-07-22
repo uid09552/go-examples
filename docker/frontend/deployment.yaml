@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goexample
+  labels:
+    app: goexample
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: goexample
+  template:
+    metadata:
+      labels:
+        app: goexample
+    spec:
+      containers:
+      - name: goexamplefrontend
+        image: uid09552/goexamplefrontend:latest
+        ports:
+        - containerPort: 8080
+      - name: goexamplebackend
+        image: uid09552/goexamplebackend:latest
+        ports:
+          - containerPort: 8081
