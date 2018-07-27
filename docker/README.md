@@ -8,3 +8,6 @@ kubectl create -f pod.yaml
 # create deployment
 kubectl create -f deployment.yaml
 kubectl get deployments
+
+# do rolling upgrade
+kubectl replace -f deployment.yaml --record
