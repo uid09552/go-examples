@@ -6,6 +6,13 @@ metadata:
     app: goexample
 spec:
   replicas: 2
+  minReadySeconds: 5
+  strategy:
+  # indicate which strategy we want for rolling update
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
   selector:
     matchLabels:
       app: goexample
@@ -21,5 +28,6 @@ spec:
         - containerPort: 8080
       - name: goexamplebackend
         image: uid09552/goexamplebackend:latest
+        imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 8081
