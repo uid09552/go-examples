@@ -26,6 +26,12 @@ spec:
         image: uid09552/goexamplefrontend:latest
         ports:
         - containerPort: 8080
+        env:
+        - name: name
+          valueFrom:
+            configMapKeyRef:
+              name: test-configmap
+              key: name
       - name: goexamplebackend
         image: uid09552/goexamplebackend:latest
         imagePullPolicy: IfNotPresent
