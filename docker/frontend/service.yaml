@@ -5,10 +5,12 @@ metadata:
   labels:
     app: goexample
 spec:
+  type: NodePort
   ports:
   - port: 8080
     targetPort: 8080
     protocol: TCP
+    nodePort: 31000
     name: http
   selector:
     app: goexample
