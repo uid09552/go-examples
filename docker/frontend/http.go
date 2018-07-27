@@ -6,6 +6,7 @@ import (
 	"io"
 	"io/ioutil"
 	"net/http"
+	"os"
 )
 
 var requestURL = "http://127.0.0.1:8081"
@@ -33,9 +34,15 @@ func helloworld(rw http.ResponseWriter, rq *http.Request) {
 		return
 	}
 	json.Unmarshal(body, &dt)
+	var name string
+	if value, ok := os.LookupEnv("name"); ok {
+		name = value
+	} else {
+		name = "not set"
+	}
 	if val, err := json.Marshal(&dt); err == nil {
 		fmt.Println(string(val))
-		fmt.Fprintf(rw, "hello from backend %s", val)
+		fmt.Fprintf(rw, "hello from backend %s %s", val, name)
 	} else {
 		io.WriteString(rw, "failed in backend")
 	}
