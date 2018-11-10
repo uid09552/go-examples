@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    field.cattle.io/creatorId: user-pn7vt
+    field.cattle.io/ingressState: '{"aW5ncmVzcy9kZWZhdWx0L2FwcC5yYW5jaGVyLm1heC1ob2NoLmRlLy90ZXN0LzgwODA=":""}'
+    field.cattle.io/publicEndpoints: '[{"addresses":["192.168.178.23"],"port":80,"protocol":"HTTP","serviceName":"default:goexamplefrontendservice","ingressName":"default:ingress","hostname":"app.rancher.max-hoch.de","path":"/test","allNodes":true}]'
+  creationTimestamp: 2018-11-10T09:22:19Z
+  generation: 4
+  name: ingress
+  namespace: default
+  resourceVersion: "12501161"
+  selfLink: /apis/extensions/v1beta1/namespaces/default/ingresses/ingress
+  uid: 1f126737-e4ca-11e8-8ae4-408d5cd4dd0f
+spec:
+  rules:
+  - host: app.rancher.max-hoch.de
+    http:
+      paths:
+      - backend:
+          serviceName: goexamplefrontendservice
+          servicePort: 8080
+        path: /test
+status:
+  loadBalancer:
+    ingress:
+    - ip: 192.168.178.62
