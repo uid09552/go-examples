@@ -1,0 +1,72 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  labels:
+    app: goexample
+  name: goexample
+  namespace: default
+spec:
+  minReadySeconds: 5
+  progressDeadlineSeconds: 600
+  replicas: 11
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: goexample
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: goexample
+    spec:
+      affinity: {}
+      containers:
+      - env:
+        - name: name
+          valueFrom:
+            configMapKeyRef:
+              key: name
+              name: test-configmap
+              optional: false
+        image: uid09552/goexamplefrontend:latest
+        imagePullPolicy: Always
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 100
+          successThreshold: 1
+          timeoutSeconds: 2
+        name: goexample
+        ports:
+        - containerPort: 8080
+          name: 8080tcp00
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 100
+          periodSeconds: 100
+          successThreshold: 2
+          timeoutSeconds: 2
+      - image: uid09552/goexamplebackend:latest
+        imagePullPolicy: IfNotPresent
+        name: goexamplebackend
+        ports:
+        - containerPort: 8081
+          name: 8081tcp00
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 30
