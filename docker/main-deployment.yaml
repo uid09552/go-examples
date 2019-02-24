@@ -1,0 +1,47 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  labels:
+    app: goexamplemain
+  name: goexamplemain
+  namespace: default
+spec:
+  minReadySeconds: 5
+  progressDeadlineSeconds: 600
+  replicas: 2
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: goexamplemain
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: goexamplemain
+    spec:
+      containers:
+      - env:
+        - name: VERSION
+          value: v1.5.hf
+        - name: GO_EXAMPLE_SERVICE
+          valueFrom:
+            configMapKeyRef:
+              key: GO_EXAMPLE_SERVICE
+              name: goexamplemain-cfg
+              optional: false
+        image: uid09552/goexamplemain:v1.5
+        imagePullPolicy: IfNotPresent
+        name: goexamplemain
+        ports:
+        - containerPort: 8080
+          name: 8080tcp00
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
