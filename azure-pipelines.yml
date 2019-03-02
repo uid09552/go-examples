@@ -17,5 +17,5 @@ steps:
    cd docker/frontend
    docker build -f Dockerfile -t $(imageNameFrontend) .
    docker login -u $(dockerId) -p $(pswd)
-   docker push $(imageNameFrontend)
+   docker push uid09552/goexamplefrontend:latest
   displayName: 'docker build frontend'
