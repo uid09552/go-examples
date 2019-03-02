@@ -13,7 +13,8 @@ variables:
   imageNameFrontend: 'uid09552/goexamplefrontend:$(build.buildId)'
 
 steps:
-- script: 
+- script:
+   /bin/bash build.sh
    cd docker/frontend
    docker build -f Dockerfile -t $(imageNameFrontend) .
    docker login -u $(dockerId) -p $(pswd)
