@@ -14,7 +14,6 @@ variables:
 
 steps:
 - script: |
-    /bin/bash build.sh
     cd docker/frontend
     docker build -f Dockerfile -t $(imageNameFrontend) .
     docker login -u $(dockerId) -p $(pswd)
