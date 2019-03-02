@@ -52,6 +52,6 @@ func helloworld(rw http.ResponseWriter, rq *http.Request) {
 func main() {
 	http.HandleFunc("/", helloworld)
 	http.ListenAndServe(":8080", nil)
-	fmt.Println("server started")
+	fmt.Println("server started on port 8080")
 
 }
