@@ -14,11 +14,6 @@ variables:
 
 steps:
 - script: |
-    cd docker/frontend
-    ID=$(docker build  -t ${IMAGE}  .  | tail -1 | sed 's/.*Successfully built \(.*\)$/\1/')
-    docker tag $(ID) uid09552/goexamplefrontend:latest
-    docker tag $(ID) uid09552/goexamplefrontend:$(build.buildId)
     docker login -u $(dockerId) -p $(pswd)
-    docker push $(IMAGE):$(build.buildId)
-    docker push uid09552/goexamplefrontend:latest
+    /bin/bash build.sh "docker/frontend" "uid09552/goexamplefrontend" $(build.buildId)
   displayName: 'docker build frontend'
