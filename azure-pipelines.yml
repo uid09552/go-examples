@@ -16,4 +16,5 @@ steps:
 - script: |
     docker login -u $(dockerId) -p $(pswd)
     /bin/bash build.sh "docker/frontend" "uid09552/goexamplefrontend" $(build.buildId)
+    rm -fr /home/vsts/.docker/config.json
   displayName: 'docker build frontend'
