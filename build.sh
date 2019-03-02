@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker login -u $(dockerId) -p $(pswd)
+docker login -u $dockerId -p $pswd
