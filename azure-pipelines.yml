@@ -21,3 +21,9 @@ steps:
     /bin/bash build.sh "docker/main" "uid09552/goexamplemain" $(build.buildId)
     rm -fr /home/vsts/.docker/config.json
   displayName: 'docker build main'
+
+- script: |
+    docker login -u $(dockerId) -p $(pswd)
+    /bin/bash build.sh "docker/backend" "uid09552/goexamplebackend" $(build.buildId)
+    rm -fr /home/vsts/.docker/config.json
+  displayName: 'docker build backend'
