@@ -45,7 +45,7 @@ func handleCounter(w http.ResponseWriter, r *http.Request) {
 		r := <-respChan
 		result = append(result, r)
 	}
-	io.WriteString(w, fmt.Sprintf("queryparams:count %d Calling frontend %d time(s) with (timeout %d ms) response \n%s", counter, counter, client.Timeout/time.Millisecond, strings.Join(result, "\nresult: ")))
+	io.WriteString(w, fmt.Sprintf("Query Params: count %d Calling frontend %d time(s) with (timeout %d ms) response \n%s", counter, counter, client.Timeout/time.Millisecond, strings.Join(result, "\nresult: ")))
 
 }
 
