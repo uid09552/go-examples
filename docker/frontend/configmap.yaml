@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: test-configmap
 data:
-  name: "from flat configmap"
+  name: "hello from configmap"
   data-2: value-2
