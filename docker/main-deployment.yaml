@@ -34,7 +34,7 @@ spec:
               name: goexamplemain-cfg
               optional: false
         image: uid09552/goexamplemain:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         name: goexamplemain
         ports:
         - containerPort: 8080
