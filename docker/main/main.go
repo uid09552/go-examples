@@ -52,8 +52,8 @@ func handleCounter(w http.ResponseWriter, r *http.Request) {
 func main() {
 	if os.Getenv("GO_EXAMPLE_SERVICE") != "" {
 		serverURL = os.Getenv("GO_EXAMPLE_SERVICE")
+		fmt.Println("server URL:", serverURL)
 	}
-	fmt.Println(serverURL)
 	http.HandleFunc("/", handleCounter)
 	http.ListenAndServe(":8080", nil)
 	fmt.Println("server started")
