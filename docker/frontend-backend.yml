@@ -22,6 +22,7 @@ spec:
     metadata:
       labels:
         app: goexample
+        sha: {{BUILD_SOURCE_VERSION}}
     spec:
       affinity: {}
       containers:
