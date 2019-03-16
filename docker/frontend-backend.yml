@@ -61,7 +61,7 @@ spec:
           successThreshold: 2
           timeoutSeconds: 2
       - image: uid09552/goexamplebackend:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         name: goexamplebackend
         ports:
         - containerPort: 8081
