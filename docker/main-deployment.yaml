@@ -33,7 +33,7 @@ spec:
               key: GO_EXAMPLE_SERVICE
               name: goexamplemain-cfg
               optional: false
-        image: uid09552/goexamplemain:v1.5
+        image: uid09552/goexamplemain:latest
         imagePullPolicy: IfNotPresent
         name: goexamplemain
         ports:
@@ -43,5 +43,4 @@ spec:
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
-      securityContext: {}
       terminationGracePeriodSeconds: 30
