@@ -1,6 +1,6 @@
 
 [![Build Status](https://dev.azure.com/maxrgbg/maxrgbg/_apis/build/status/uid09552.go-examples?branchName=master)](https://dev.azure.com/maxrgbg/maxrgbg/_build/latest?definitionId=1&branchName=master)
-## Example Service written in go.
+## Example Service written in go, with deployment into k8s cluster and some Ops commands
 Application is used to test a K8S Cluster.
 CI-Steps
 1. Build Docker image
