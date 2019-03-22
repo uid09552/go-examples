@@ -1,6 +1,7 @@
 # drain & upgrade nodes
 ```
 kubectl get nodes
+kubectl cordon $node
 kubectl drain $node --ignore-deamonsets
 kubectl delete node $node
 kubeadm token list
@@ -8,5 +9,5 @@ kubeadm token list
 kubeadm token generate
 kubeadm token create $token --ttl 3h --discovery-token-ca-cert-hash sha256$hash
 kubeadm join --token --discovery-token-ca-cert-hash sha256$hash
-
+kubectl uncordon $node
 ```
