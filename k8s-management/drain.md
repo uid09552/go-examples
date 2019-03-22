@@ -1,4 +1,4 @@
-# Upgrade nodes
+# drain & upgrade nodes
 ```
 kubectl get nodes
 kubectl drain $node --ignore-deamonsets
