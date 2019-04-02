@@ -1,0 +1,27 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: busybox
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: busybox
+  template:
+    metadata:
+      labels:
+        app: busybox
+    spec:
+      containers:
+      - image: busybox:latest
+        name: busybox
+        ports:
+        - containerPort: 80
+          name: web
+        volumeMounts:
+        - name: web
+          mountPath: /tmp/data
+      volumes:
+      - name: web
+        persistentVolumeClaim:
+          claimName: hostpath-pvc
