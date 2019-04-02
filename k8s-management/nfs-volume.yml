@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: lapv
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: /var/nfs/general
+    server: $your-storage-server-private-IP
+    readOnly: false
+    
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-pvc
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nfs-pod
+  labels:
+    name: nfs-pod
+spec:
+  containers:
+  - name: nfs-ctn
+    image: busybox
+    command:
+      - sleep
+      - "3600"
+    volumeMounts:
+    - name: nfsvol
+      mountPath: /tmp
+  restartPolicy: Always
+  securityContext:
+    fsGroup: 65534
+    runAsUser: 65534
+  volumes:
+    - name: nfsvol
+      persistentVolumeClaim:
+        claimName: nfs-pvc
