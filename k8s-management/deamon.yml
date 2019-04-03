@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: zuul
+spec:
+  selector:
+    matchLabels:
+      quiet: "pod"
+  template:
+    metadata:
+      labels:
+        quiet: pod
+    spec:
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
+      containers:
+      - name: gozer
+        image: k8s.gcr.io/pause:2.0
