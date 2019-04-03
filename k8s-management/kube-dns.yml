@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kube-dns
+  namespace: kube-system
+data:
+  upstreamNameservers: |
+    ["8.8.8.8", "8.8.4.4"]
+
+Using new (1.10+) CoreDNS Corefile would be:
+
+.:53 {
+        errors
+        health
+        kubernetes cluster.local  in-addr.arpa ip6.arpa {
+           upstream  8.8.8.8 8.8.4.4
+           pods insecure
+           fallthrough in-addr.arpa ip6.arpa
+        }
+        prometheus :9153
+        proxy .  8.8.8.8 8.8.4.4
+        cache 30
+    }
