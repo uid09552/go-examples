@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: prod-pod
+  labels:
+    app: busybox
+    env: prod
+spec:
+  replicas: 2
+  selector: 
+    matchLabels:
+      env: prod
+  template:
+    metadata:
+      labels:
+        app: busybox
+        env: prod
+    spec:
+      containers:
+      - args:
+        - sleep
+        - "10000"
+        name: prod
+        image: busybox
+      tolerations:
+      - key: node-typ
+        operator: Equal
+        value: prod1
+        effect: NoSchedule
