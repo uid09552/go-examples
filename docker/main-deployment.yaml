@@ -24,6 +24,9 @@ spec:
         app: goexamplemain
         sha: {{BUILD_SOURCE_VERSION}}
     spec:
+      securityContext:
+        runAsUser: 1000
+        fsGroup: 2000
       containers:
       - env:
         - name: VERSION
@@ -37,6 +40,8 @@ spec:
         image: uid09552/goexamplemain:latest
         imagePullPolicy: Always
         name: goexamplemain
+        securityContext: 
+          allowPrivilegeEscalation: false
         ports:
         - containerPort: 8080
           name: 8080tcp00
