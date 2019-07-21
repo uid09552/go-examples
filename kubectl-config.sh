@@ -5,3 +5,4 @@ kubectl config set-context default --cluster rancher --user admin
 kubectl config set-credentials admin --token $VARIABLE_TOKEN
 kubectl config use-context default
 kubectl get nodes
+#Rancher has own tokens
