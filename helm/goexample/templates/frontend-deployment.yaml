@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goexample
+  labels:
+    app: goexample
+spec:
+  replicas: 2
+  minReadySeconds: 5
+  strategy:
+  # indicate which strategy we want for rolling update
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: goexample
+  template:
+    metadata:
+      labels:
+        app: goexample
+    spec:
+      containers:
+      - name: goexamplefrontend
+        image: uid09552/goexamplefrontend:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: name
+          valueFrom:
+            configMapKeyRef:
+              name: test-configmap
+              key: name
+      - name: goexamplebackend
+        image: uid09552/goexamplebackend:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 8081

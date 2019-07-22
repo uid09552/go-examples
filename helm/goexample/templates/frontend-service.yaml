@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: goexamplefrontendservice
+  labels:
+    app: goexample
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+    nodePort: {{required "Node port is needed for frontend service" .Values.NodePort }}
+    name: http
+  selector:
+    app: goexample

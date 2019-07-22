@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-configmap
+data:
+  name: {{ .Release.Name }}-frontend
+  info: {{ .Values.Info }}
+  data-2: value-2
