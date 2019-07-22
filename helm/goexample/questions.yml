@@ -1,0 +1,7 @@
+questions:
+- variable: Info
+  default: ""
+  description: "Htpasswd authentication containing your user:pass associations"
+  type: password
+  label: Docker Registry Htpasswd Authentication
+  group: "Secret Settings"

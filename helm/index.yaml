@@ -3,11 +3,20 @@ entries:
   goexample:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2019-07-22T15:26:28.281761+02:00"
+    created: "2019-07-22T15:37:20.4369+02:00"
     description: A Helm chart for Kubernetes
-    digest: ccf73aacae264d2cae246c0d43bd13752a0778404ec3b592a62cc5be8e69dea5
+    digest: 338dcd5373daff3b78ff0e48fcdbf16bf9662b3ca1345e917bc2f09d3eb3a7f9
+    name: goexample
+    urls:
+    - goexample-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: "2019-07-22T15:37:20.436669+02:00"
+    description: A Helm chart for Kubernetes
+    digest: 59b33b6d43f26089f7571d9dcb8d2ff049f0d2b716637f3716f2c3d93dd14c4b
     name: goexample
     urls:
     - goexample-0.1.0.tgz
     version: 0.1.0
-generated: "2019-07-22T15:26:28.28128+02:00"
+generated: "2019-07-22T15:37:20.436186+02:00"
