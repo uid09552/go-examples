@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: goexample
+  name: {{ .Values.AppName }}
   labels:
-    app: goexample
+    app: {{ .Values.AppName }}
 spec:
   replicas: 2
   minReadySeconds: 5
@@ -15,14 +15,14 @@ spec:
       maxUnavailable: 1
   selector:
     matchLabels:
-      app: goexample
+      app: {{ .Values.AppName }}
   template:
     metadata:
       labels:
-        app: goexample
+        app: {{ .Values.AppName }}
     spec:
       containers:
-      - name: goexamplefrontend
+      - name: {{ .Values.AppName }}frontend
         image: uid09552/goexamplefrontend:latest
         ports:
         - containerPort: 8080
@@ -32,7 +32,7 @@ spec:
             configMapKeyRef:
               name: test-configmap
               key: name
-      - name: goexamplebackend
+      - name: {{ .Values.AppName }}backend
         image: uid09552/goexamplebackend:latest
         imagePullPolicy: IfNotPresent
         ports:

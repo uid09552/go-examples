@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: goexamplefrontendservice
+  name: {{ .Values.AppName }}frontendservice
   labels:
-    app: goexample
+    app: {{ .Values.AppName }}
 spec:
   type: NodePort
   ports:
@@ -13,4 +13,4 @@ spec:
     nodePort: {{required "Node port is needed for frontend service" .Values.NodePort }}
     name: http
   selector:
-    app: goexample
+    app: {{ .Values.AppName }}

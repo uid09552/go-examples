@@ -1,2 +1,3 @@
 Info: MyInfoFromHelmChart
-
+AppName: GoExampleHelmChart
+NodePort: 31002

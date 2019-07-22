@@ -1,4 +1,11 @@
+categories:
+- Blog
 questions:
 - variable: Info
   default: "my text"
   description: "Htpasswd authentication containing your user:pass associations"
+- variable: AppName
+  default: "my text"
+  description: "Htpasswd authentication containing your user:pass associations"
+- variable: NodePort
+  default: 31002

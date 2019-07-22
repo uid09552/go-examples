@@ -2,9 +2,8 @@ apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
   labels:
-    app: goexamplemain
-  name: goexamplemain
-  namespace: default
+    app: {{ .Values.AppName }}main
+  name: {{ .Values.AppName }}main
 spec:
   minReadySeconds: 5
   progressDeadlineSeconds: 600
@@ -12,7 +11,7 @@ spec:
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: goexamplemain
+      app: {{ .Values.AppName }}main
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -21,7 +20,7 @@ spec:
   template:
     metadata:
       labels:
-        app: goexamplemain
+        app: {{ .Values.AppName }}main
         sha: {{ .Values.BUILD_SOURCE_VERSION }}
     spec:
       securityContext:
@@ -35,11 +34,11 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: GO_EXAMPLE_SERVICE
-              name: goexamplemain-cfg
+              name: {{ .Values.AppName }}main-cfg
               optional: false
         image: uid09552/goexamplemain:latest
         imagePullPolicy: Always
-        name: goexamplemain
+        name: {{ .Values.AppName }}main
         securityContext: 
           allowPrivilegeEscalation: false
         ports:
