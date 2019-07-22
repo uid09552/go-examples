@@ -3,4 +3,4 @@ data:
   GO_EXAMPLE_SERVICE: http://{{ .Values.AppName }}frontendservice:8080
 kind: ConfigMap
 metadata:
-  name: HelmConfigMapmain-cfg
+  name: helmconfigmapmain-cfg
