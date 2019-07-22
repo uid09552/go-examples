@@ -3,7 +3,16 @@ entries:
   goexample:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2019-07-22T18:19:07.620634+02:00"
+    created: "2019-07-22T18:24:15.759+02:00"
+    description: A Helm chart for Kubernetes
+    digest: 2fad0105fd9ef61bea2754b9f048247edcaf8c9c21b43fc9a1d53be96a3aacca
+    name: goexample
+    urls:
+    - https://raw.githubusercontent.com/uid09552/go-examples/master/helm/goexample-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: "2019-07-22T18:24:15.758764+02:00"
     description: A Helm chart for Kubernetes
     digest: c776c21470ed4d76803f32d62ed2944745ab149f5844b39731435c416bf7caa7
     name: goexample
@@ -12,7 +21,7 @@ entries:
     version: 0.1.4
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2019-07-22T18:19:07.620401+02:00"
+    created: "2019-07-22T18:24:15.758527+02:00"
     description: A Helm chart for Kubernetes
     digest: 397e23f32ef8b27ef5580075bc76b20e46815c19376446bbebe467885103f858
     name: goexample
@@ -21,7 +30,7 @@ entries:
     version: 0.1.3
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2019-07-22T18:19:07.620123+02:00"
+    created: "2019-07-22T18:24:15.758276+02:00"
     description: A Helm chart for Kubernetes
     digest: 6ee34502a0ec7bf2a85629109f875c3e77225dbf4f82368ae058e325f4d28626
     name: goexample
@@ -30,7 +39,7 @@ entries:
     version: 0.1.2
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2019-07-22T18:19:07.619908+02:00"
+    created: "2019-07-22T18:24:15.757999+02:00"
     description: A Helm chart for Kubernetes
     digest: 338dcd5373daff3b78ff0e48fcdbf16bf9662b3ca1345e917bc2f09d3eb3a7f9
     name: goexample
@@ -39,11 +48,11 @@ entries:
     version: 0.1.1
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2019-07-22T18:19:07.619684+02:00"
+    created: "2019-07-22T18:24:15.757748+02:00"
     description: A Helm chart for Kubernetes
     digest: 59b33b6d43f26089f7571d9dcb8d2ff049f0d2b716637f3716f2c3d93dd14c4b
     name: goexample
     urls:
     - https://raw.githubusercontent.com/uid09552/go-examples/master/helm/goexample-0.1.0.tgz
     version: 0.1.0
-generated: "2019-07-22T18:19:07.619146+02:00"
+generated: "2019-07-22T18:24:15.757236+02:00"

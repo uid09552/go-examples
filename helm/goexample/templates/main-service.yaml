@@ -4,7 +4,6 @@ metadata:
   labels:
     app: {{ .Values.AppName }}main
   name: {{ .Values.AppName }}main
-  namespace: default
 spec:
   externalTrafficPolicy: Cluster
   ports:
