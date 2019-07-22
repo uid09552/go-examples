@@ -8,7 +8,7 @@ spec:
   externalTrafficPolicy: Cluster
   ports:
   - name: http
-    nodePort: 33000
+    nodePort: 31009
     port: 8080
     protocol: TCP
     targetPort: 8080
