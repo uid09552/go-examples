@@ -34,7 +34,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: GO_EXAMPLE_SERVICE
-              name: {{ .Values.AppName }}main-cfg
+              name: HelmConfigMapmain-cfg
               optional: false
         image: uid09552/goexamplemain:latest
         imagePullPolicy: Always
