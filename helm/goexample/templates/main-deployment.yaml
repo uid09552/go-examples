@@ -34,7 +34,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: GO_EXAMPLE_SERVICE
-              name: HelmConfigMapmain-cfg
+              name: helmconfigmapmain-cfg
               optional: false
         image: uid09552/goexamplemain:latest
         imagePullPolicy: Always
