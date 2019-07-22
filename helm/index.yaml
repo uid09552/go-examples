@@ -1,0 +1,13 @@
+apiVersion: v1
+entries:
+  goexample:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: "2019-07-22T15:19:56.607211+02:00"
+    description: A Helm chart for Kubernetes
+    digest: ccf73aacae264d2cae246c0d43bd13752a0778404ec3b592a62cc5be8e69dea5
+    name: goexample
+    urls:
+    - https://github.com/uid09552/go-examples/helm/goexample-0.1.0.tgz
+    version: 0.1.0
+generated: "2019-07-22T15:19:56.60666+02:00"
