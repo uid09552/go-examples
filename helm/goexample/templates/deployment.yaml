@@ -22,14 +22,14 @@ spec:
         app: goexamplerepo
     spec:
       containers:
-      - name: goexamplerepo
-        image: uid09552/goexamplerepo:latest
-        ports:
-        - containerPort: 8085
-      - env:
-        - name: GO_EXAMPLE_SERVICE
-          valueFrom:
-            configMapKeyRef:
-              key: GO_EXAMPLE_SERVICE
-              name: goexamplemain-cfg
-              optional: false
+        - name: goexamplerepo
+          image: uid09552/goexamplerepo:latest
+          ports:
+          - containerPort: 8085
+          env:
+            - name: GO_EXAMPLE_SERVICE
+              valueFrom:
+                configMapKeyRef:
+                  key: GO_EXAMPLE_SERVICE
+                  name: goexamplemain-cfg
+                  optional: false
