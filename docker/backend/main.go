@@ -13,7 +13,7 @@ type Data struct {
 	Value string `json:"value"`
 }
 
-func handleFrontend(rw http.ResponseWriter, rq *http.Request) {
+func handleBackend(rw http.ResponseWriter, rq *http.Request) {
 	dt := Data{Name: "hello", Value: "myvalue "}
 	out, err := json.Marshal(dt)
 	if err != nil {
@@ -24,7 +24,7 @@ func handleFrontend(rw http.ResponseWriter, rq *http.Request) {
 }
 
 func main() {
-	fmt.Println("Starting Frontend")
-	http.HandleFunc("/", handleFrontend)
+	fmt.Println("Starting Backend")
+	http.HandleFunc("/", handleBackend)
 	http.ListenAndServe(":8081", nil)
 }
