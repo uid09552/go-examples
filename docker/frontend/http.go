@@ -42,7 +42,7 @@ func helloworld(rw http.ResponseWriter, rq *http.Request) {
 	}
 	if val, err := json.Marshal(&dt); err == nil {
 		fmt.Println(string(val))
-		fmt.Fprintf(rw, "hello from backend %s %s", val, name)
+		fmt.Fprintf(rw, "hello from backend, called from frontend: backend response: %s configmap: %s", val, name)
 	} else {
 		io.WriteString(rw, "failed in backend")
 	}
