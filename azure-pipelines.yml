@@ -27,3 +27,9 @@ steps:
     /bin/bash build.sh "docker/backend" "uid09552/goexamplebackend" $(build.buildId)
     rm -fr /home/vsts/.docker/config.json
   displayName: 'docker build backend'
+
+- script: |
+    docker login -u $(dockerId) -p $(pswd)
+    /bin/bash build.sh "docker/reposervice" "uid09552/goexamplerepo" $(build.buildId)
+    rm -fr /home/vsts/.docker/config.json
+  displayName: 'docker build reposervice'
