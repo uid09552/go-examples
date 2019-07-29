@@ -20,6 +20,7 @@ spec:
     metadata:
       labels:
         app: goexamplerepo
+        sha: {{BUILD_SOURCE_VERSION}}
     spec:
       containers:
         - name: goexamplerepo
