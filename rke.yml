@@ -4,14 +4,6 @@ authentication:
 bastion_host: 
   ssh_agent_auth: false
 ignore_docker_version: true
-# 
-#   # Currently only nginx ingress provider is supported.
-#   # To disable ingress controller, set `provider: none`
-#   # To enable ingress on specific nodes, use the node_selector, eg:
-#      provider: nginx
-#      node_selector:
-#        app: ingress
-# 
 ingress: 
   provider: "nginx"
 kubernetes_version: "v1.14.3-rancher1-1"
