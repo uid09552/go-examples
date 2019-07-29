@@ -31,5 +31,5 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   key: GO_EXAMPLE_SERVICE
-                  name: goexamplemain-cfg
+                  name: goexamplerepo-cfg
                   optional: false
