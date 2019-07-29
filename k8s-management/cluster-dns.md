@@ -44,3 +44,25 @@ spec:
         value: "2"
       - name: edns0
 ```
+# Not using kube-dns only custom
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busyboxdns
+  labels:
+    name: busybox
+spec:
+  hostname: busybox-2
+  subdomain: default-subdomain
+  containers:
+  - image: busybox:1.28
+    command:
+      - sleep
+      - "3600"
+    name: busybox
+  dnsConfig:
+    nameservers:
+      - 8.8.8.8
+  dnsPolicy: None
+```
