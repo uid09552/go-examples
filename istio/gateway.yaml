@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: nextcloud-gw
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+  - port:
+      number: 8028
+      name: http
+      protocol: HTTP
+    hosts:
+    - "nextcloud.max-hoch.de"
