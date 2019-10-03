@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+//Note struct for notes
 type Note struct {
 	Creator string `json:"creator"`
 	Text    string `json:"text" binding:"required"`
@@ -32,6 +33,7 @@ func main() {
 	router.Run(":3000")
 }
 
+//NotesHandler will handle Note Requests
 func NotesHandler(c *gin.Context) {
 	c.Header("Content-Type", "application/json")
 	if c.Request.Method == http.MethodGet {
