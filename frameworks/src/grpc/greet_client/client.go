@@ -3,17 +3,29 @@ package main
 import (
 	"context"
 	"fmt"
-	"greetpb"
+	"grpc/greetpb"
 	"io"
 	"log"
 	"net/http"
+	"strings"
 	"time"
 
 	"google.golang.org/grpc"
 )
 
 func main() {
-	cc2, err := grpc.Dial("localhost:50052", grpc.WithInsecure())
+
+}
+
+func handler(w http.ResponseWriter, r *http.Request) {
+	result := invokeAll()
+	fmt.Fprintf(w, "invoked grpc result: %s", result)
+	http.HandleFunc("/", handler)
+	log.Fatal(http.ListenAndServe(":50052", nil))
+}
+
+func invokeAll() string {
+	cc2, err := grpc.Dial("localhost:50051", grpc.WithInsecure())
 	if err != nil {
 		fmt.Println("failed to connect")
 	}
@@ -35,7 +47,7 @@ func main() {
 	time.Sleep(5000 * time.Millisecond)
 	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
 	defer cancel()
-
+	result := []string{}
 	go func() {
 		var counter int = 0
 		for {
@@ -43,6 +55,7 @@ func main() {
 			res, _ := Unary(ctx, c)
 			fmt.Println(res)
 			fmt.Println(counter)
+			result = append(result, res)
 		}
 	}()
 
@@ -50,6 +63,7 @@ func main() {
 	case <-ctx.Done():
 		fmt.Println(ctx.Err())
 	}
+	return strings.Join(result, " ")
 }
 
 func simpleRequest() {

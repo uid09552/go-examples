@@ -1,7 +1,8 @@
 FROM golang
 
-ADD . /go/src/greet/server
-WORKDIR /go/src/greet/server
+ADD ./greet_server/ /go/src/grpc/server
+ADD ./greetpb/ /go/src/grpc/greetpb/
+WORKDIR /go/src/grpc/server
 RUN go get
 RUN go build .
 

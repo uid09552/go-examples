@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
-	"greetpb"
+	"grpc/greetpb"
 	"io"
 	"log"
 	"net"
@@ -65,7 +65,7 @@ func (*server) GreetManyTimes(req *greetpb.GreetManyTimesRequest, stream greetpb
 
 func main() {
 	log.Printf("server is starting")
-	lis, err := net.Listen("tcp", "0.0.0.0:50052")
+	lis, err := net.Listen("tcp", "0.0.0.0:50051")
 	if err != nil {
 		log.Fatalf("failed to listen %v", err)
 	}
