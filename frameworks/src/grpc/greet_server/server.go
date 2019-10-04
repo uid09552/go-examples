@@ -53,7 +53,7 @@ func (*server) LongGreet(stream greetpb.GreetService_LongGreetServer) error {
 func (*server) GreetManyTimes(req *greetpb.GreetManyTimesRequest, stream greetpb.GreetService_GreetManyTimesServer) error {
 	firstName := req.GetGreeting().GetFirstName()
 	fmt.Println("Greet function was invoked")
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 5; i++ {
 		response := &greetpb.GreetManyTimesResponse{
 			Result: "hello " + firstName,
 		}

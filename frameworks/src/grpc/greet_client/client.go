@@ -43,8 +43,8 @@ func invokeAll() string {
 	DoServerStreaming(c)
 	fmt.Println("Start client streaming")
 	DoClientStreaming(c)
-	time.Sleep(5000 * time.Millisecond)
-	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
+	time.Sleep(1000 * time.Millisecond)
+	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
 	defer cancel()
 	result := []string{}
 	go func() {
@@ -66,7 +66,7 @@ func invokeAll() string {
 }
 
 func simpleRequest() {
-	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
 	defer cancel()
 
 	go func() {
@@ -80,7 +80,7 @@ func simpleRequest() {
 		}
 	}()
 	client := http.Client{}
-	req, _ := http.NewRequest("GET", "http://httpstat.us/200?sleep=4000", nil)
+	req, _ := http.NewRequest("GET", "http://httpstat.us/200?sleep=1000", nil)
 	req = req.WithContext(ctx)
 	res, error := client.Do(req)
 	print(error)
