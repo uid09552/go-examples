@@ -32,7 +32,7 @@ spec:
 apiVersion: getambassador.io/v1
 kind: Mapping
 metadata:
-  name: frontend
+  name: grpc
 spec:
   prefix: /grpc
   service: grpc:80
