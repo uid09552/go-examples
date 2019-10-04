@@ -14,8 +14,10 @@ import (
 )
 
 func main() {
+	fmt.Println("starting client")
 	http.HandleFunc("/", handler)
-	log.Fatal(http.ListenAndServe(":50052", nil))
+	http.ListenAndServe(":50052", nil)
+	fmt.Println("end client")
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
@@ -43,24 +45,29 @@ func invokeAll() string {
 	DoServerStreaming(c)
 	fmt.Println("Start client streaming")
 	DoClientStreaming(c)
-	time.Sleep(1000 * time.Millisecond)
-	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
 	defer cancel()
 	result := []string{}
 	go func() {
 		var counter int = 0
 		for {
 			counter++
-			res, _ := Unary(ctx, c)
+			res, err := Unary(ctx, c)
 			fmt.Println(res)
 			fmt.Println(counter)
 			result = append(result, res)
+			if err != nil {
+				break
+			}
 		}
 	}()
 
 	select {
+	case <-time.After(1 * time.Second):
+		fmt.Println("canceled")
+		cancel()
 	case <-ctx.Done():
-		fmt.Println(ctx.Err())
+		log.Fatalln("canceled")
 	}
 	return strings.Join(result, " ")
 }
@@ -92,7 +99,7 @@ func Unary(ctx context.Context, c greetpb.GreetServiceClient) (string, error) {
 	req := &greetpb.GreetRequest{Greeting: &greetpb.Greeting{FirstName: "Max", LastName: "Hh"}}
 	res, err := c.Greet(ctx, req)
 	if err != nil {
-		log.Fatalf("failed", err)
+		log.Printf("unary failed", err)
 		return "", err
 	}
 	fmt.Println(res.Result)
@@ -103,7 +110,8 @@ func Unary2(ctx context.Context, c greetpb.SummationServiceClient) (int64, error
 	req := &greetpb.SummationRequest{Summation: &greetpb.Summating{Num1: 1, Num2: 2}}
 	res, err := c.Sum(ctx, req)
 	if err != nil {
-		log.Fatalf("failed", err)
+		log.Printf("unary 2 failed", err)
+		return 0, err
 	}
 	return res.Result, nil
 }
