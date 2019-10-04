@@ -1,4 +1,5 @@
 kubectl create clusterrolebinding my-cluster-admin-binding --clusterrole=cluster-admin --user=$(gcloud info --format="value(config.account)")
+kubectl apply -f https://getambassador.io/yaml/ambassador/ambassador-rbac.yaml
 
 ---
 apiVersion: v1

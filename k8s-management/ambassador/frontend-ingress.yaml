@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontendservice-ingress
+  annotations:
+    getambassador.io/config: |
+      ---
+      apiVersion: ambassador/v0
+      kind:  Mapping
+      name:  goexamplemain-mapping
+      prefix: /goexamplemain
+      service: goexamplemain:8080
+spec:
+  type: ClusterIP
+  selector:
+    app: goexamplemain
+  ports:
+  - port: 8080
+    name: http
+    targetPort: 8080
+---
+apiVersion: getambassador.io/v1
+kind: Mapping
+metadata:
+  name: frontend
+spec:
+  prefix: /frontend
+  service: goexamplefrontendservice:8080
