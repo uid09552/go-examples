@@ -14,14 +14,13 @@ import (
 )
 
 func main() {
-
+	http.HandleFunc("/", handler)
+	log.Fatal(http.ListenAndServe(":50052", nil))
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	result := invokeAll()
 	fmt.Fprintf(w, "invoked grpc result: %s", result)
-	http.HandleFunc("/", handler)
-	log.Fatal(http.ListenAndServe(":50052", nil))
 }
 
 func invokeAll() string {
@@ -34,7 +33,7 @@ func invokeAll() string {
 	print(val)
 	fmt.Println("starting client")
 	simpleRequest()
-	cc, err := grpc.Dial("localhost:50052", grpc.WithInsecure())
+	cc, err := grpc.Dial("localhost:50051", grpc.WithInsecure())
 	if err != nil {
 		fmt.Println("failed to connect")
 	}

@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  grpc
+  labels:
+    name:  grpc
+spec:
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: grpc
+  template:
+    metadata:
+      labels:
+        name: grpc
+        app: grpc
+        sha: {{BUILD_SOURCE_VERSION}}
+    spec:
+      containers:
+      - image:  uid09552/greetserver:latest
+        name:  grpcserver
+        resources:
+          requests:
+            cpu: "20m"
+            memory: "200M"
+      - image: uid09552/greetclient:latest
+        name: grpcclient
+        resources:
+          requests:
+            cpu: "20m"
+            memory: "200M"        
+        imagePullPolicy: Always
+      restartPolicy: Always
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: grpc
+spec:
+  selector:
+    app:  grpc
+  type:  ClusterIP
+  ports:
+  - name: grpc
+    port: 80
+    targetPort: 50052
