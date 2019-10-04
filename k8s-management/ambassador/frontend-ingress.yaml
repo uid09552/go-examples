@@ -27,3 +27,12 @@ metadata:
 spec:
   prefix: /frontend
   service: goexamplefrontendservice:8080
+
+---
+apiVersion: getambassador.io/v1
+kind: Mapping
+metadata:
+  name: frontend
+spec:
+  prefix: /grpc
+  service: grpc:80

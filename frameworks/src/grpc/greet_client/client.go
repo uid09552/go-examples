@@ -64,7 +64,7 @@ func invokeAll() string {
 
 	select {
 	case <-time.After(1 * time.Second):
-		fmt.Println("canceled")
+		fmt.Println("after timeout canceled")
 		cancel()
 	case <-ctx.Done():
 		log.Fatalln("canceled")
