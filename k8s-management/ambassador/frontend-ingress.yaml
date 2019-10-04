@@ -36,3 +36,4 @@ metadata:
 spec:
   prefix: /grpc
   service: grpc:80
+  timeout_ms: 20000
