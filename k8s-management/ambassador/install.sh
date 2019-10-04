@@ -1,6 +1,6 @@
-kubectl create clusterrolebinding my-cluster-admin-binding --clusterrole=cluster-admin --user=$(gcloud info --format="value(config.account)")
+#kubectl create clusterrolebinding my-cluster-admin-binding --clusterrole=cluster-admin --user=$(gcloud info --format="value(config.account)")
 kubectl apply -f https://getambassador.io/yaml/ambassador/ambassador-rbac.yaml
-
+echo <<EOL
 ---
 apiVersion: v1
 kind: Service
@@ -16,3 +16,5 @@ spec:
     protocol: TCP
   selector:
     service: ambassador
+
+EOL | kubectl apply -f -
