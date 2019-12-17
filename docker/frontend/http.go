@@ -18,6 +18,11 @@ type Data struct {
 }
 
 func helloworld(rw http.ResponseWriter, rq *http.Request) {
+	
+	if envRep, ok := os.LookupEnv("BACKEND_URL"); ok {
+		requestURL = envRep
+	}
+	
 	dt := &Data{}
 	resp, err := http.Get(requestURL)
 	if err != nil {
