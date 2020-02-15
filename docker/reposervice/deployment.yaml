@@ -5,7 +5,7 @@ metadata:
   labels:
     app: goexamplerepo
 spec:
-  replicas: 1
+  replicas: 0
   minReadySeconds: 5
   strategy:
   # indicate which strategy we want for rolling update
