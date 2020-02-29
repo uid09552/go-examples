@@ -21,3 +21,5 @@ frameworks/src/go.mongodb.org/*
 frameworks/src/golang.org
 frameworks/src/google.golang.org
 frameworks/src/gopkg.in
+.vscode/*
+frameworks/src/.vscode
