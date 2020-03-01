@@ -5,7 +5,7 @@ apiVersion: apps/v1
 metadata:
   name: zookeeper-deployment-1
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       app: zookeeper-1
