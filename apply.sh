@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo "deploy kafka"
 cd kafka/no-persist
 kubectl apply -f kafka-deploy.yml
 kubectl apply -f kafka-service.yml
