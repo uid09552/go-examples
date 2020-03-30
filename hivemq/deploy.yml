@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: hivemq-replica
+spec:
+  replicas: 1
+  selector:
+    app: hivemq-cluster1
+  template:
+    metadata:
+      name: hivemq-cluster1
+      labels:
+        app: hivemq-cluster1
+    spec:
+      containers:
+      - name: hivemq-pods
+        image: hivemq/hivemq3:dns-latest 
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+          name: web-ui
+        - containerPort: 1883
+          protocol: TCP
+          name: mqtt
+        env:
+        - name: HIVEMQ_DNS_DISCOVERY_ADDRESS
+          value: "hivemq-discovery.default.svc.cluster.local." 
+        - name: HIVEMQ_DNS_DISCOVERY_TIMEOUT
+          value: "20"
+        - name: HIVEMQ_DNS_DISCOVERY_INTERVAL
+          value: "21"
+        readinessProbe:
+          tcpSocket:
+            port: 1883
+          initialDelaySeconds: 30
+          periodSeconds: 60
+          failureThreshold: 60
+        livenessProbe:
+          tcpSocket:
+            port: 1883
+          initialDelaySeconds: 30
+          periodSeconds: 60
+          failureThreshold: 60
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: hivemq-discovery
+  annotations:
+    service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
+spec:
+  selector:
+    app: hivemq-cluster1
+  ports:
+    - protocol: TCP
+      port: 1883
+      nodePort: 32550
+      targetPort: 1883
+  type: NodePort

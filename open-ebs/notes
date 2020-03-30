@@ -1,0 +1,1 @@
+sudo udevadm info -q property -n /dev/sda5

@@ -1,0 +1,55 @@
+apiVersion: v1
+items:
+- apiVersion: openebs.io/v1alpha1
+  kind: BlockDevice
+  metadata:
+    creationTimestamp: "2020-03-06T18:59:22Z"
+    generation: 6
+    labels:
+      kubernetes.io/hostname: nuc
+      ndm.io/blockdevice-type: blockdevice
+      ndm.io/managed: "true"
+    name: blockdevice-5a60df38a95bb598e8a60cfc8991ccc1
+    namespace: openebs
+    resourceVersion: "27936299"
+    selfLink: /apis/openebs.io/v1alpha1/namespaces/openebs/blockdevices/blockdevice-5a60df38a95bb598e8a60cfc8991ccc1
+    uid: d7063d12-b1f3-40c5-97ce-8e5c8680290f
+  spec:
+    capacity:
+      logicalSectorSize: 512
+      physicalSectorSize: 0
+      storage: 7811891200
+    claimRef:
+      apiVersion: openebs.io/v1alpha1
+      kind: BlockDeviceClaim
+      name: bdc-pvc-1d47e0b3-b09f-4589-819c-b30f5ef99183
+      namespace: openebs
+      resourceVersion: "27913536"
+      uid: 47aaeb8a-3e9a-47bb-8eee-8ad40ae85e70
+    details:
+      compliance: SPC-2
+      deviceType: ""
+      firmwareRevision: ""
+      model: Twister_Line
+      serial: "12102400025144"
+      vendor: Intenso
+    devlinks:
+    - kind: by-id
+      links:
+      - /dev/disk/by-id/usb-Intenso_Twister_Line_12102400025144-0:0
+    - kind: by-path
+      links:
+      - /dev/disk/by-path/pci-0000:00:14.0-usb-0:2:1.0-scsi-0:0:0:0
+    filesystem:
+      fsType: ext4
+    nodeAttributes:
+      nodeName: nuc
+    partitioned: "No"
+    path: /dev/sdb
+  status:
+    claimState: Claimed
+    state: Active
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

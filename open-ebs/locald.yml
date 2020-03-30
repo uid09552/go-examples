@@ -1,0 +1,19 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  annotations:
+    cas.openebs.io/config: |
+      - name: StorageType
+        value: "device"
+      - name: FSType
+        value: ext4
+    openebs.io/cas-type: local
+    storageclass.kubernetes.io/is-default-class: "true"
+  creationTimestamp: "2020-02-19T19:51:46Z"
+  name: openebs-device
+  resourceVersion: "23169903"
+  selfLink: /apis/storage.k8s.io/v1/storageclasses/openebs-device
+  uid: 2b2bf694-63b9-4616-909b-d2a911cde3ce
+provisioner: openebs.io/local
+reclaimPolicy: Delete
+volumeBindingMode: WaitForFirstConsumer

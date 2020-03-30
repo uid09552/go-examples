@@ -1,0 +1,24 @@
+apiVersion: openebs.io/v1alpha1
+kind: BlockDevice
+metadata:
+  name: ubuntu-bd
+  labels:
+    kubernetes.io/hostname: ubuntu # like gke-openebs-user-default-pool-044afcb8-bmc0
+    ndm.io/managed: "false" # for manual disk creation put false
+    ndm.io/blockdevice-type: blockdevice
+status:
+  claimState: Unclaimed
+  state: Active
+spec:
+  capacity:
+       storage: 1000000000 #like 53687091200
+  devlinks:
+  - kind: by-id
+    links:
+    - /dev/disk/by-id/ata-Samsung_SSD_840_EVO_250GB_S1DBNSBF474141Y-part5 # like /dev/disk/by-path/virtio-pci-0000:00:03.0-scsi-0:0:2:0
+  - kind: by-path
+    links:
+    - /dev/disk/by-path/pci-0000:00:13.0-ata-1-part5 # like /dev/disk/by-path/virtio-pci-0000:00:03.0-scsi-0:0:2:0
+  nodeAttributes:
+    nodeName: ubuntu # output of `kubectl get nodes` can be used
+  path: /dev/sda5 # like /dev/sdb

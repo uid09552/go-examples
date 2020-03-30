@@ -1,0 +1,24 @@
+apiVersion: openebs.io/v1alpha1
+kind: BlockDevice
+metadata:
+  name: nuc-bd
+  labels:
+    kubernetes.io/hostname: nuc # like gke-openebs-user-default-pool-044afcb8-bmc0
+    ndm.io/managed: "false" # for manual disk creation put false
+    ndm.io/blockdevice-type: blockdevice
+status:
+  claimState: Unclaimed
+  state: Active
+spec:
+  capacity:
+       storage: 1000000000 #like 53687091200
+  devlinks:
+  - kind: by-id
+    links:
+    - /dev/disk/by-id/ata-SAMSUNG_MZNLN128HCGR-00000_S1ZXNXAG710205-part2 # like /dev/disk/by-id/scsi-0Google_PersistentDisk_disk-2
+  - kind: by-path
+    links:
+    - /dev/disk/by-path/pci-0000:00:1f.2-ata-4-part2 # like /dev/disk/by-path/virtio-pci-0000:00:03.0-scsi-0:0:2:0
+  nodeAttributes:
+    nodeName: nuc # output of `kubectl get nodes` can be used
+  path: /dev/sda2 # like /dev/sdb
