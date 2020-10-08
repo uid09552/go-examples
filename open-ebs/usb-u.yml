@@ -1,0 +1,41 @@
+apiVersion: openebs.io/v1alpha1
+kind: BlockDevice
+metadata:
+  creationTimestamp: "2020-03-06T21:15:27Z"
+  generation: 8
+  labels:
+    kubernetes.io/hostname: ubuntu
+    ndm.io/blockdevice-type: blockdevice
+    ndm.io/managed: "true"
+  name: blockdevice-849efe2a688f42195fbc2fe2c7f5f498
+  namespace: openebs
+  resourceVersion: "74984220"
+  selfLink: /apis/openebs.io/v1alpha1/namespaces/openebs/blockdevices/blockdevice-849efe2a688f42195fbc2fe2c7f5f498
+  uid: 2387ec65-74cc-493a-bc14-4b027abe0f13
+spec:
+  capacity:
+    logicalSectorSize: 512
+    physicalSectorSize: 0
+    storage: 3932160000
+  details:
+    compliance: SPC-2
+    deviceType: ""
+    firmwareRevision: ""
+    model: "6387"
+    serial: "13032800003007"
+    vendor: 058f
+  devlinks:
+  - kind: by-id
+    links:
+    - /dev/disk/by-id/usb-058f_6387_13032800003007-0:0
+  - kind: by-path
+    links:
+    - /dev/disk/by-path/pci-0000:00:14.0-usb-0:1:1.0-scsi-0:0:0:0
+  filesystem: {}
+  nodeAttributes:
+    nodeName: ubuntu
+  partitioned: "No"
+  path: /dev/sdb
+status:
+  claimState: Unclaimed
+  state: Active
