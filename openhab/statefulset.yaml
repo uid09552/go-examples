@@ -1,0 +1,94 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodered
+  labels:
+    app: nodered
+spec:
+  type: ClusterIP
+  ports:
+    - port: 1880
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: nodered
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: nodered
+spec:
+  serviceName: "nodered"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodered
+  template:
+    metadata:
+      labels:
+        app: nodered
+    spec:
+      containers:
+      - name: nodered
+        image: nodered/node-red-docker:v10
+        ports:
+          - name: http
+            containerPort: 1880
+            protocol: TCP
+        env:
+          - name: FLOWS
+            value: "flows.json"
+        volumeMounts:
+        - name: local-vol
+          mountPath: /data
+      volumes:
+        - name: local-vol
+          persistentVolumeClaim:
+            claimName: local-vol
+      nodeSelector:
+        kubernetes.io/hostname: ubuntu
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-storage
+spec:
+  capacity:
+    storage: 100Gi
+  # volumeMode field requires BlockVolume Alpha feature gate to be enabled.
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /data
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - ubuntu
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: local-vol
+spec:
+  accessModes: [ "ReadWriteOnce" ]
+  storageClassName: "local-storage"
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: getambassador.io/v1
+kind: Mapping
+metadata:
+  name: nodered
+spec:
+  prefix: /nodered
+  service: nodered:1880
+  timeout_ms: 20000
