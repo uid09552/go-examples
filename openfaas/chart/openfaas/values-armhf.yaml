@@ -1,0 +1,45 @@
+basic_auth: false
+
+nodeSelector:
+  beta.kubernetes.io/arch: arm
+
+gateway:
+  image: openfaas/gateway:0.18.18-armhf
+  directFunctions: true
+
+oauth2Plugin:
+  enabled: false
+
+faasnetes:
+  image: openfaas/faas-netes:0.12.2-armhf
+
+operator:
+  image: openfaas/faas-netes:0.12.2-armhf
+  create: false
+
+queueWorker:
+  image: openfaas/queue-worker:0.11.0-armhf
+
+prometheus:
+  image: prom/prometheus:v2.11.0
+  resources:
+    requests:
+      memory: "100Mi"
+
+alertmanager:
+  image: prom/alertmanager:v0.18.0
+
+faasIdler:
+  image: openfaas/faas-idler:0.3.0-armhf
+
+basicAuthPlugin:
+  image: openfaas/basic-auth-plugin:0.18.17-armhf
+  replicas: 0
+
+ingressOperator:
+  create: false
+
+# Unfortunately the exporter is not multi-arch (yet)
+nats:
+  metrics:
+    enabled: false
