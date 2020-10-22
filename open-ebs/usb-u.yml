@@ -17,6 +17,13 @@ spec:
     logicalSectorSize: 512
     physicalSectorSize: 0
     storage: 3932160000
+  claimRef:
+    apiVersion: openebs.io/v1alpha1
+    kind: BlockDeviceClaim
+    name: bdc-pvc-3a52f5b8-51f0-45bd-a60c-03b9fd29af91
+    namespace: openebs
+    resourceVersion: "27913536"
+    uid: 47aaeb8a-3e9a-47bb-8eee-8ad40ae85e70
   details:
     compliance: SPC-2
     deviceType: ""
@@ -36,6 +43,7 @@ spec:
     nodeName: ubuntu
   partitioned: "No"
   path: /dev/sdb
+
 status:
-  claimState: Unclaimed
+  claimState: Claimed
   state: Active

@@ -22,7 +22,6 @@ items:
     claimRef:
       apiVersion: openebs.io/v1alpha1
       kind: BlockDeviceClaim
-      name: bdc-pvc-1d47e0b3-b09f-4589-819c-b30f5ef99183
       namespace: openebs
       resourceVersion: "27913536"
       uid: 47aaeb8a-3e9a-47bb-8eee-8ad40ae85e70

@@ -1,1 +1,3 @@
 sudo udevadm info -q property -n /dev/sda5
+
+https://blog.openebs.io/creating-manual-blockdevice-add44705119f
