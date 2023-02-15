@@ -4,7 +4,7 @@ go 1.13
 
 require (
 	github.com/golang/groupcache v0.0.0-20200121045136-8c9f03a8e57e // indirect
-	github.com/google/go-cmp v0.3.0
+	github.com/google/go-cmp v0.5.5
 	github.com/googleapis/gnostic v0.2.0 // indirect
 	github.com/gorilla/context v1.1.1 // indirect
 	github.com/gorilla/mux v1.6.2
@@ -12,13 +12,10 @@ require (
 	github.com/onsi/gomega v1.8.1 // indirect
 	github.com/openfaas/faas v0.0.0-20191125105239-365f459b3f3a
 	github.com/openfaas/faas-provider v0.15.1
-	github.com/pkg/errors v0.8.1
-	github.com/prometheus/client_golang v1.0.0
-	github.com/prometheus/client_model v0.2.0 // indirect
+	github.com/pkg/errors v0.9.1
+	github.com/prometheus/client_golang v1.11.1
 	go.uber.org/goleak v1.0.0 // indirect
-	golang.org/x/xerrors v0.0.0-20191011141410-1b5146add898 // indirect
 	google.golang.org/appengine v1.6.2 // indirect
-	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
 	k8s.io/api v0.18.2
 	k8s.io/apimachinery v0.18.2
 	k8s.io/client-go v0.18.2
